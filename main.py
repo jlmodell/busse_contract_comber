@@ -1,13 +1,14 @@
-import smtplib
 import pandas as pd
+from dotenv import load_dotenv
+
+load_dotenv()
 import os
 from pymongo import MongoClient
 from datetime import datetime
 
 # Connect to MongoDB
-mongodb_uri = (
-    "mongodb+srv://jmodell:5T1aBQa7@busseforce0.9fmow.mongodb.net/bussepricing"
-)
+mongodb_uri = os.getenv("MONGODB_URI")
+assert mongodb_uri, "MONGODB_URI not set"
 client = MongoClient(mongodb_uri)
 
 # Get the database
